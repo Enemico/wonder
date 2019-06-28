@@ -78,3 +78,4 @@ apt-get autoremove -y
 apt-get clean
 rm -fr /var/lib/apt/lists/*
 rm -fr /tmp/conf
+rm -fr /var/log/dpkg.log
