@@ -50,32 +50,48 @@ if [ "x$(which install_packages)" = "x" ]; then
     }
 fi
 
-set -e
-
-install_packages ${BUILD_PACKAGES} ${PACKAGES}
+install_all_packages () {
+  install_packages ${BUILD_PACKAGES} ${PACKAGES}
+}
 
 # Install the configuration, overlayed over /etc.
-rsync -a /tmp/conf/ /etc/
+sync () {
+  rsync -a /tmp/conf/ /etc/
+}
 
 # clone wonder
-cd /opt/ && git clone https://github.com/robiso/wondercms.git 
-chown -R www-data:www-data /opt/wondercms
-
+clone () {
+  cd /opt/ && git clone https://github.com/robiso/wondercms.git
+  chown -R www-data:www-data /opt/wondercms
+}
 
 # Create the directories that Apache will need at runtime,
 # since we won't be using the init script.
 #mkdir /var/run/apache2 /var/lock/apache2
 
-/usr/local/bin/setup-apache.sh
-
+# setup apache
+setup_apache () {
+  /usr/local/bin/setup-apache.sh
 # Set up modsecurity.
 # The file is named 00modsecurity.conf so it is loaded first.
-mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/00modsecurity.conf
+  mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/00modsecurity.conf
+}
 
 # Remove packages used for installation.
-apt-get remove -y --purge ${BUILD_PACKAGES}
-apt-get autoremove -y
-apt-get clean
-rm -fr /var/lib/apt/lists/*
-rm -fr /tmp/conf
-rm -fr /var/log/dpkg.log
+cleanup () {
+  apt-get remove -y --purge ${BUILD_PACKAGES}
+  apt-get autoremove -y
+  apt-get clean
+  rm -fr /var/lib/apt/lists/*
+  rm -fr /tmp/conf
+  rm -fr /var/log/dpkg.log
+  rm -fr /var/log/apt/*
+}
+
+set -e
+install_all_packages
+sync
+clone
+setup_apache
+cleanup
+
