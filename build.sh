@@ -65,7 +65,7 @@ sync () {
 clone () {
   # cd /opt/ && git clone https://github.com/robiso/wondercms.git
   cd /tmp && wget https://github.com/robiso/wondercms/releases/download/2.6.0/WonderCMS-2.6.0.zip
-  unzip /tmp/WonderCMS* /opt/
+  unzip /tmp/WonderCMS* -d /opt/
   chown -R www-data:www-data /opt/wondercms
   rm /tmp/WonderCMS*
 }
