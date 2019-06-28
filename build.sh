@@ -5,6 +5,8 @@
 BUILD_PACKAGES="
         rsync
 	git
+	wget
+	unzip
 "
 
 # Packages required to serve the website and run the services.
@@ -61,7 +63,9 @@ sync () {
 
 # clone wonder
 clone () {
-  cd /opt/ && git clone https://github.com/robiso/wondercms.git
+  # cd /opt/ && git clone https://github.com/robiso/wondercms.git
+  cd /tmp && wget https://github.com/robiso/wondercms/releases/download/2.6.0/WonderCMS-2.6.0.zip
+  unzip /tmp/WonderCMS* /opt/
   chown -R www-data:www-data /opt/wondercms
 }
 
