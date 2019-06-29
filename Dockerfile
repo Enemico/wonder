@@ -1,6 +1,7 @@
 FROM enemico/apache2-base
 
 COPY conf /tmp/conf
+COPY scripts /tmp/scripts
 COPY build.sh /tmp/build.sh
 RUN /tmp/build.sh && rm /tmp/build.sh
 
