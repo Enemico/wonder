@@ -26,6 +26,7 @@ APACHE_MODULES_ENABLE="
         rewrite
         security2
         xsendfile
+	ssl
 "
 export APACHE_MODULES_ENABLE
 
