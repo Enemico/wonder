@@ -56,10 +56,9 @@ install_all_packages () {
   install_packages ${BUILD_PACKAGES} ${PACKAGES}
 }
 
-# Install the configuration, overlayed over /etc, and script over /usr/local/bin
+# Install the configuration, overlayed over /etc, 
 sync () {
   rsync -a /tmp/conf/ /etc/
-  rsync -a /tmp/scripts/ /usr/local/bin/ssl-setup
 }
 
 # clone wonder
@@ -78,7 +77,7 @@ clone () {
 # setup apache
 setup_apache () {
   /usr/local/bin/setup-apache.sh
-  /usr/local/bin/
+  /usr/local/bin/ssl-setup.sh
 # Set up modsecurity.
 # The file is named 00modsecurity.conf so it is loaded first.
   mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/00modsecurity.conf
