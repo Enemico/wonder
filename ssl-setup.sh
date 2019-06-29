@@ -10,8 +10,8 @@ if [ "$APACHE_SITES" != "" ]; then
 
     # Generate testing certs if they aren't here.
 
-    certpem=/etc/ssl/$APACHE_SITES/$APACHE_SITES.crt
-    certkey=/etc/ssl/$APACHE_SITES/$APACHE_SITES.key
+    certpem=/etc/apache2/ssl/$APACHE_SITES.crt
+    certkey=/etc/apache2/ssl/$APACHE_SITES.key
 
     if [ ! -f $certpem ]; then
 	template="/etc/ssleay.conf"
@@ -26,7 +26,7 @@ if [ "$APACHE_SITES" != "" ]; then
 
 	# create the certificate.
 
-	mkdir -p /etc/ssl/$APACHE_SITES
+	mkdir -p /etc/apache2/ssl/
 
 	openssl req -config $TMPFILE -new -x509 -days 3650 -nodes -out $certpem -keyout $certkey
 
