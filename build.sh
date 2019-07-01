@@ -78,7 +78,6 @@ clone () {
 # setup apache
 setup_apache () {
   /usr/local/bin/setup-apache.sh
-  /usr/local/bin/ssl-setup.sh
 # Set up modsecurity.
 # The file is named 00modsecurity.conf so it is loaded first.
   mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/00modsecurity.conf
