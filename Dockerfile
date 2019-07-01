@@ -6,4 +6,4 @@ COPY run.sh /usr/local/bin/run.sh
 COPY build.sh /tmp/build.sh
 RUN /tmp/build.sh && rm /tmp/build.sh
 
-ENTRYPOINT ["/usr/local/bin/run.sh && /usr/local/bin/chaperone"]
+ENTRYPOINT ["/usr/local/bin/chaperone"]
