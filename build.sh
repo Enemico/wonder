@@ -37,7 +37,7 @@ APACHE_CONFIG_ENABLE="
 export APACHE_CONFIG_ENABLE
 
 # Sites to enable.
-APACHE_SITES="wonder.dirtydigitalfields.net"
+APACHE_SITES="wonder"
 export APACHE_SITES
 
 # Use php-fpm.
