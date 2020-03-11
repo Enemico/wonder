@@ -31,7 +31,7 @@ export APACHE_MODULES_ENABLE
 
 # Additional config snippets to enable for Apache.
 APACHE_CONFIG_ENABLE="
-        php7.0-fpm
+        php7.3-fpm
         modsecurity-custom
 "
 export APACHE_CONFIG_ENABLE
